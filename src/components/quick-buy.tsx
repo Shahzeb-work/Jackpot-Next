@@ -1,5 +1,8 @@
+"use client";
+
 import { GCCoinIcon, SCCoinIcon } from "./coins";
 import { CartIcon, ChevronLeftIcon, ChevronRightIcon } from "./icons";
+import { useAppState } from "./providers/app-state";
 
 const PACKAGES = [
   { coins: "5,000", price: "$4.99", bonus: "500" },
@@ -11,8 +14,18 @@ const PACKAGES = [
 ];
 
 export default function QuickBuy() {
+  const { user, openSignIn, openPackagesCheckout } = useAppState();
+
+  function handleBuy(pack: (typeof PACKAGES)[number]) {
+    if (!user) {
+      openSignIn();
+      return;
+    }
+    openPackagesCheckout(pack);
+  }
+
   return (
-    <section>
+    <section id="quick-buy">
       <div className="mb-4 flex items-center gap-3">
         <CartIcon className="size-5 text-emerald" />
         <h2 className="font-display text-2xl tracking-wide text-ink sm:text-[28px]">
@@ -75,6 +88,7 @@ export default function QuickBuy() {
 
             <button
               type="button"
+              onClick={() => handleBuy(pack)}
               className="mt-1 w-full rounded-full bg-emerald px-3 py-1.5 text-sm font-bold text-cream-surface transition group-hover:bg-emerald-deep"
             >
               {pack.price}

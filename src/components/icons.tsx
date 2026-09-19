@@ -250,6 +250,207 @@ export function ChatIcon({ className }: IconProps) {
   );
 }
 
+export function ClockIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth={base} />
+      <path
+        d="M12 7.5V12l3 2"
+        stroke="currentColor"
+        strokeWidth={base}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function HeartIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <path
+        d="M12 20s-7.5-4.6-9.5-9.3C1.2 7.4 3 4.5 6.2 4.5c1.9 0 3.3 1 4.3 2.4C11.5 5.5 13 4.5 14.9 4.5c3.2 0 5 2.9 3.6 6.2C16.5 15.4 12 20 12 20Z"
+        stroke="currentColor"
+        strokeWidth={base}
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function ChevronDownIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <path
+        d="m5.5 9.5 6.5 7 6.5-7"
+        stroke="currentColor"
+        strokeWidth={base}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function CrownIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <path
+        d="M3.5 9 7 12l5-6.5L17 12l3.5-3v8.5h-17V9Z"
+        stroke="currentColor"
+        strokeWidth={base}
+        strokeLinejoin="round"
+      />
+      <path d="M4 19.5h16" stroke="currentColor" strokeWidth={base} strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function HeadsetIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <path
+        d="M4 13v-1a8 8 0 1 1 16 0v1"
+        stroke="currentColor"
+        strokeWidth={base}
+        strokeLinecap="round"
+      />
+      <rect x="3" y="13" width="4" height="6" rx="1.4" stroke="currentColor" strokeWidth={base} />
+      <rect x="17" y="13" width="4" height="6" rx="1.4" stroke="currentColor" strokeWidth={base} />
+      <path
+        d="M19 19v.5a3 3 0 0 1-3 3h-2.5"
+        stroke="currentColor"
+        strokeWidth={base}
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+export function MagicHatIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <path
+        d="M6 15 8 4.5h8L18 15"
+        stroke="currentColor"
+        strokeWidth={base}
+        strokeLinejoin="round"
+      />
+      <ellipse cx="12" cy="15" rx="9" ry="2.3" stroke="currentColor" strokeWidth={base} />
+      <path d="M9.5 8.5h5" stroke="currentColor" strokeWidth={base} strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function SpinWheelIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden>
+      <circle cx="12" cy="12" r="10" fill="#f4c766" />
+      <path d="M12 12 21 12A9 9 0 0 0 12 3Z" fill="#f4655a" />
+      <path d="M12 12 17.5 4.5A9 9 0 0 0 6.5 4.5Z" fill="#f4c766" />
+      <path d="M12 12 4.7 7.2A9 9 0 0 0 3 12Z" fill="#f4655a" />
+      <path d="M12 12 3 12A9 9 0 0 0 8.5 20Z" fill="#f4c766" />
+      <path d="M12 12 8.5 20A9 9 0 0 0 17.5 19.5Z" fill="#f4655a" />
+      <path d="M12 12 21 12A9 9 0 0 1 17.5 19.5Z" fill="#3fae6a" />
+      <circle cx="12" cy="12" r="2.6" fill="#0e0c09" />
+      <circle cx="12" cy="12" r="1.3" fill="#f4c766" />
+    </svg>
+  );
+}
+
+export function ApplePayIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden>
+      <path
+        d="M8.3 7.6c-.5.6-1.3 1-2 1-.1-.8.3-1.6.7-2.1.5-.6 1.3-1 2-1.1.1.8-.2 1.6-.7 2.2Zm.7 1.1c-1.1-.1-2 .6-2.6.6-.6 0-1.3-.6-2.2-.6-1.1 0-2.2.7-2.7 1.7-1.2 2-.3 5.1.8 6.7.6.8 1.2 1.7 2.1 1.7.8 0 1.1-.5 2.1-.5s1.3.5 2.2.5c.9 0 1.5-.8 2.1-1.7.6-.9.9-1.8 1-1.9-.1 0-1.9-.7-1.9-2.8 0-1.7 1.4-2.5 1.5-2.6-.8-1.2-2.1-1.3-2.4-1.1Z"
+        fill="currentColor"
+      />
+      <path
+        d="M14.5 6.8h2.4c1.6 0 2.7 1.1 2.7 2.7s-1.1 2.7-2.8 2.7h-1.4v2.7h-1v-8.1Zm1 .9v3.6h1.3c1.1 0 1.8-.7 1.8-1.8s-.7-1.8-1.8-1.8h-1.3Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+export function GooglePayIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden>
+      <path
+        d="M11.5 11.2v2.5h3.5c-.2 1-1.2 2.9-3.5 2.9-2.1 0-3.8-1.8-3.8-3.9s1.7-3.9 3.8-3.9c1.2 0 2 .5 2.4.9l1.6-1.6c-1-1-2.4-1.6-4-1.6-3.3 0-6 2.7-6 6s2.7 6 6 6c3.5 0 5.8-2.4 5.8-5.9 0-.4 0-.7-.1-1h-5.7Z"
+        fill="currentColor"
+      />
+      <path
+        d="M18.6 11.1h-.9V9.3h-1v1.8h-.9v.9h.9v2.7c0 .9.4 1.3 1.3 1.3.3 0 .5 0 .7-.1v-.9c-.1 0-.3.1-.5.1-.4 0-.5-.2-.5-.5v-2.6h.9v-.9Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+export function CashAppIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden>
+      <rect x="2.5" y="2.5" width="19" height="19" rx="6" fill="currentColor" />
+      <path
+        d="M13.4 6.7c-.3-.3-.7-.5-1.1-.6l-.2-.9h-1.6l.2 1c-.4.1-.8.4-1.1.7-.5.6-.8 1.4-.6 2.2.3 1.3 1.4 1.6 2.4 1.9.9.3 1.4.5 1.5 1 .1.6-.4 1-1 1.1-.7.1-1.4-.2-1.8-.9l-1.5.7c.4.9 1.1 1.5 2 1.7l-.2 1h1.6l.2-.9c.5-.1 1-.3 1.3-.7.6-.6.9-1.5.7-2.3-.3-1.3-1.5-1.6-2.4-1.9-.9-.3-1.3-.5-1.4-.9-.1-.5.3-.9.9-1 .6-.1 1.2.2 1.5.7l1.5-.6c-.2-.5-.6-.9-1-1.2Z"
+        fill="#fff"
+      />
+    </svg>
+  );
+}
+
+export function CardPaymentIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <rect x="2.5" y="5.5" width="19" height="13" rx="2" stroke="currentColor" strokeWidth={base} />
+      <path d="M2.5 9.5h19" stroke="currentColor" strokeWidth={base} />
+      <path d="M5.5 14.5h4" stroke="currentColor" strokeWidth={base} strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function PersonIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <circle cx="12" cy="8.2" r="3.4" stroke="currentColor" strokeWidth={base} />
+      <path
+        d="M5 20c.7-3.8 3.5-6 7-6s6.3 2.2 7 6"
+        stroke="currentColor"
+        strokeWidth={base}
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+export function BellIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <path
+        d="M6 10.5c0-3.3 2.7-6 6-6s6 2.7 6 6v3.3l1.5 2.7h-15l1.5-2.7V10.5Z"
+        stroke="currentColor"
+        strokeWidth={base}
+        strokeLinejoin="round"
+      />
+      <path
+        d="M10 18.5a2 2 0 0 0 4 0"
+        stroke="currentColor"
+        strokeWidth={base}
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+export function PlusIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth={base} strokeLinecap="round" />
+    </svg>
+  );
+}
+
 export function CloseIcon({ className }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>

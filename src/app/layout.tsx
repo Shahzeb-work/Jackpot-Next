@@ -5,6 +5,9 @@ import Sidebar from "@/components/sidebar";
 import SupportButton from "@/components/support-button";
 import AuthModal from "@/components/auth-modal";
 import RewardsModal from "@/components/rewards-modal";
+import PackagesModal from "@/components/packages-modal";
+import PackagesListModal from "@/components/packages-list-modal";
+import SpinWheelModal from "@/components/spin-wheel-modal";
 import { AppStateProvider } from "@/components/providers/app-state";
 import { getCurrentUser } from "@/lib/auth/current-user";
 import "./globals.css";
@@ -48,6 +51,9 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
           <SupportButton />
           <AuthModal />
           <RewardsModal />
+          <PackagesModal />
+          <PackagesListModal />
+          <SpinWheelModal />
         </AppStateProvider>
       </body>
     </html>

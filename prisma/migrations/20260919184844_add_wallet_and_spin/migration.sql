@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "User" ADD COLUMN     "goldCoins" INTEGER NOT NULL DEFAULT 0,
+ADD COLUMN     "lastSpinAt" TIMESTAMP(3),
+ADD COLUMN     "sweepsCoins" INTEGER NOT NULL DEFAULT 0;

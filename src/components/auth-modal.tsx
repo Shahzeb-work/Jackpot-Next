@@ -3,6 +3,7 @@
 import { useState, useTransition } from "react";
 import type { FormEvent } from "react";
 import { useAppState } from "./providers/app-state";
+import type { SafeUser } from "@/lib/auth/current-user";
 import { Modal } from "./ui/modal";
 import { signInAction, signUpAction } from "@/lib/actions/auth";
 import { GCCoinIcon, SCCoinIcon } from "./coins";
@@ -14,7 +15,7 @@ export default function AuthModal() {
   const tab = modal?.type === "auth" ? modal.tab : "signin";
 
   return (
-    <Modal open={open} onClose={closeModal} panelClassName="w-full max-w-3xl">
+    <Modal open={open} onClose={closeModal}>
       <div className="flex overflow-hidden rounded-3xl border border-line bg-cream-surface shadow-2xl">
         <PromoPanel />
 
@@ -170,7 +171,7 @@ function PasswordInput({
   );
 }
 
-function SignInForm({ onSuccess }: { onSuccess: (user: { id: string; email: string; username: string | null }) => void }) {
+function SignInForm({ onSuccess }: { onSuccess: (user: SafeUser) => void }) {
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
@@ -237,7 +238,7 @@ function SignInForm({ onSuccess }: { onSuccess: (user: { id: string; email: stri
   );
 }
 
-function SignUpForm({ onSuccess }: { onSuccess: (user: { id: string; email: string; username: string | null }) => void }) {
+function SignUpForm({ onSuccess }: { onSuccess: (user: SafeUser) => void }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
