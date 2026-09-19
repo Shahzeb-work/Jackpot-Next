@@ -3,6 +3,10 @@ import { Geist, Geist_Mono, Bebas_Neue } from "next/font/google";
 import Header from "@/components/header";
 import Sidebar from "@/components/sidebar";
 import SupportButton from "@/components/support-button";
+import AuthModal from "@/components/auth-modal";
+import RewardsModal from "@/components/rewards-modal";
+import { AppStateProvider } from "@/components/providers/app-state";
+import { getCurrentUser } from "@/lib/auth/current-user";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -22,23 +26,29 @@ const marquee = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  title: "Jackpot — Play, Earn, Redeem",
+  title: "Jackpotrush.io — Play, Earn, Redeem",
   description: "Sweeps coin rewards dashboard: VIP tiers, quick buy packages and daily promotions.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  const user = await getCurrentUser();
+
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${marquee.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-cream text-ink font-sans">
-        <Header />
-        <div className="flex flex-1 w-full">
-          <Sidebar />
-          <main className="flex-1 min-w-0">{children}</main>
-        </div>
-        <SupportButton />
+        <AppStateProvider initialUser={user}>
+          <Header />
+          <div className="flex flex-1 w-full">
+            <Sidebar />
+            <main className="flex-1 min-w-0">{children}</main>
+          </div>
+          <SupportButton />
+          <AuthModal />
+          <RewardsModal />
+        </AppStateProvider>
       </body>
     </html>
   );

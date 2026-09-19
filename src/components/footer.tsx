@@ -18,8 +18,8 @@ export default function Footer() {
     <footer className="mt-14 border-t border-line bg-cream-surface-2">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-10 sm:grid-cols-2 md:px-6 lg:grid-cols-4">
         <div>
-          <span className="font-display text-2xl tracking-wide text-emerald-deep">
-            JACKPOT
+          <span className="font-display text-2xl tracking-wide text-gold-bright">
+            JACKPOTRUSH<span className="text-ink-soft">.io</span>
           </span>
           <p className="mt-2 max-w-xs text-sm text-ink-soft">
             A sweeps-coin rewards dashboard. Play for fun, climb the VIP
@@ -35,7 +35,7 @@ export default function Footer() {
                 <li key={link}>
                   <a
                     href="#"
-                    className="text-sm text-ink-soft transition hover:text-emerald-deep"
+                    className="text-sm text-ink-soft transition hover:text-gold-bright"
                   >
                     {link}
                   </a>
@@ -48,7 +48,7 @@ export default function Footer() {
 
       <div className="border-t border-line px-4 py-5 text-center text-xs text-ink-soft md:px-6">
         No purchase necessary. 18+. Play responsibly.
-        © {new Date().getFullYear()} Jackpot. All rights reserved.
+        © {new Date().getFullYear()} Jackpotrush.io. All rights reserved.
       </div>
     </footer>
   );

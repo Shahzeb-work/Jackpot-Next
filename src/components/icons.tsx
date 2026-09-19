@@ -250,6 +250,108 @@ export function ChatIcon({ className }: IconProps) {
   );
 }
 
+export function CloseIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <path
+        d="m6 6 12 12M18 6 6 18"
+        stroke="currentColor"
+        strokeWidth={base}
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+export function EyeIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <path
+        d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"
+        stroke="currentColor"
+        strokeWidth={base}
+        strokeLinejoin="round"
+      />
+      <circle cx="12" cy="12" r="2.6" stroke="currentColor" strokeWidth={base} />
+    </svg>
+  );
+}
+
+export function EyeOffIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <path
+        d="M3 3l18 18M9.9 5.2A10.6 10.6 0 0 1 12 5c6 0 9.5 6.5 9.5 6.5a15 15 0 0 1-3.2 3.9M6.5 6.8C3.9 8.6 2.5 11.5 2.5 11.5S6 18 12 18a9.7 9.7 0 0 0 3.3-.6"
+        stroke="currentColor"
+        strokeWidth={base}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M9.9 12.6a2.6 2.6 0 0 0 3.5 3.4"
+        stroke="currentColor"
+        strokeWidth={base}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function PercentBadgeIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth={base} />
+      <path d="m8.5 15.5 7-7" stroke="currentColor" strokeWidth={base} strokeLinecap="round" />
+      <circle cx="9" cy="9" r="1.4" fill="currentColor" />
+      <circle cx="15" cy="15" r="1.4" fill="currentColor" />
+    </svg>
+  );
+}
+
+export function MailIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <rect x="3.5" y="5.5" width="17" height="13" rx="1.5" stroke="currentColor" strokeWidth={base} />
+      <path d="m4.5 6.5 7.5 6 7.5-6" stroke="currentColor" strokeWidth={base} strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+export function FacebookIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden>
+      <path
+        d="M14.5 21v-7.2h2.4l.4-2.8h-2.8V9.2c0-.8.2-1.4 1.4-1.4h1.5V5.3c-.3 0-1.1-.1-2.1-.1-2.1 0-3.6 1.3-3.6 3.7v2.1H9.3v2.8h2.4V21h2.8Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+export function GoogleIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden>
+      <path
+        d="M21.3 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.2a4.5 4.5 0 0 1-1.9 2.9v2.4h3.1c1.8-1.7 2.9-4.1 2.9-7.1Z"
+        fill="#4285F4"
+      />
+      <path
+        d="M12 21.5c2.6 0 4.8-.9 6.4-2.3l-3.1-2.4c-.9.6-2 .9-3.3.9-2.5 0-4.6-1.7-5.4-3.9H3.4v2.5A9.5 9.5 0 0 0 12 21.5Z"
+        fill="#34A853"
+      />
+      <path
+        d="M6.6 13.8a5.7 5.7 0 0 1 0-3.6V7.7H3.4a9.5 9.5 0 0 0 0 8.6l3.2-2.5Z"
+        fill="#FBBC05"
+      />
+      <path
+        d="M12 6.3c1.4 0 2.7.5 3.7 1.4l2.7-2.7C16.8 3.4 14.6 2.5 12 2.5A9.5 9.5 0 0 0 3.4 7.7l3.2 2.5c.8-2.2 2.9-3.9 5.4-3.9Z"
+        fill="#EA4335"
+      />
+    </svg>
+  );
+}
+
 export function PackageIcon({ className }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>

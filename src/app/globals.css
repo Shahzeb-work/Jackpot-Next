@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --cream: #f3ecd8;
-  --cream-surface: #fffbf2;
-  --cream-surface-2: #fbf1da;
-  --line: #e3d3a6;
-  --line-soft: #ecdfb8;
-  --ink: #2b2013;
-  --ink-soft: #7c6b49;
-  --emerald: #146c43;
-  --emerald-deep: #0e4f31;
-  --emerald-bright: #1e9660;
-  --gold: #c0902e;
-  --gold-deep: #96701f;
-  --gold-bright: #e8b94f;
+  --cream: #0e0c09;
+  --cream-surface: #1c1712;
+  --cream-surface-2: #161310;
+  --line: #332c1c;
+  --line-soft: #2a2416;
+  --ink: #f3ecd8;
+  --ink-soft: #a89878;
+  --emerald: #a9812e;
+  --emerald-deep: #7c5e1f;
+  --emerald-bright: #d4af37;
+  --gold: #d9a438;
+  --gold-deep: #a97c22;
+  --gold-bright: #f4c766;
 }
 
 @theme inline {
@@ -38,11 +38,12 @@
 body {
   background: var(--cream);
   color: var(--ink);
+  color-scheme: dark;
 }
 
 ::selection {
   background: var(--gold-bright);
-  color: var(--ink);
+  color: var(--cream);
 }
 
 .chip-dots {

@@ -19,7 +19,7 @@ export default function ProvidersStrip() {
         </h2>
         <a
           href="#"
-          className="ml-auto text-sm font-semibold text-emerald-deep transition hover:text-emerald"
+          className="ml-auto text-sm font-semibold text-emerald-bright transition hover:text-gold-bright"
         >
           View all
         </a>
@@ -29,7 +29,7 @@ export default function ProvidersStrip() {
         {PROVIDERS.map((name) => (
           <div
             key={name}
-            className="flex h-16 min-w-[10rem] shrink-0 items-center justify-center rounded-2xl border border-line bg-cream-surface px-5 text-sm font-semibold text-ink-soft transition hover:border-gold hover:text-emerald-deep"
+            className="flex h-16 min-w-[10rem] shrink-0 items-center justify-center rounded-2xl border border-line bg-cream-surface px-5 text-sm font-semibold text-ink-soft transition hover:border-gold hover:text-gold-bright"
           >
             {name}
           </div>

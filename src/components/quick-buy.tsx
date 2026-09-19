@@ -1,12 +1,13 @@
-import { CartIcon, ChevronLeftIcon, ChevronRightIcon, CoinIcon } from "./icons";
+import { GCCoinIcon, SCCoinIcon } from "./coins";
+import { CartIcon, ChevronLeftIcon, ChevronRightIcon } from "./icons";
 
 const PACKAGES = [
-  { coins: "5,000", price: "$4.99", bonus: "+500 bonus", tone: "from-emerald-bright to-emerald" },
-  { coins: "12,000", price: "$9.99", bonus: "+1,500 bonus", tone: "from-gold-bright to-gold" },
-  { coins: "25,000", price: "$19.99", bonus: "+3,750 bonus", tone: "from-emerald-bright to-emerald" },
-  { coins: "60,000", price: "$44.99", bonus: "+10,000 bonus", tone: "from-gold-bright to-gold", featured: true },
-  { coins: "125,000", price: "$89.99", bonus: "+22,000 bonus", tone: "from-emerald-bright to-emerald" },
-  { coins: "260,000", price: "$179.99", bonus: "+50,000 bonus", tone: "from-gold-bright to-gold" },
+  { coins: "5,000", price: "$4.99", bonus: "500" },
+  { coins: "12,000", price: "$9.99", bonus: "1,500" },
+  { coins: "25,000", price: "$19.99", bonus: "3,750" },
+  { coins: "60,000", price: "$44.99", bonus: "10,000", featured: true },
+  { coins: "125,000", price: "$89.99", bonus: "22,000" },
+  { coins: "260,000", price: "$179.99", bonus: "50,000" },
 ];
 
 export default function QuickBuy() {
@@ -20,7 +21,7 @@ export default function QuickBuy() {
         <div className="ml-auto flex items-center gap-3">
           <a
             href="#"
-            className="text-sm font-semibold text-emerald-deep transition hover:text-emerald"
+            className="text-sm font-semibold text-emerald-bright transition hover:text-gold-bright"
           >
             View all
           </a>
@@ -60,19 +61,15 @@ export default function QuickBuy() {
               </span>
             )}
 
-            <div
-              className={`relative grid size-14 place-items-center rounded-full bg-gradient-to-br ${pack.tone} text-cream-surface shadow-inner`}
-            >
-              <CoinIcon className="size-8" />
-              <span className="absolute inset-0 rounded-full border-2 border-dashed border-cream-surface/40" />
-            </div>
+            <GCCoinIcon className="size-14 drop-shadow-[0_2px_6px_rgba(0,0,0,0.45)]" />
 
             <div>
-              <p className="font-mono text-sm font-bold text-ink">
+              <p className="flex items-center justify-center gap-1.5 font-mono text-sm font-bold text-ink">
+                <GCCoinIcon className="size-4" />
                 {pack.coins}
               </p>
-              <p className="text-[11px] font-medium text-ink-soft">
-                {pack.bonus}
+              <p className="mt-1 flex items-center justify-center gap-1 text-[11px] font-medium text-ink-soft">
+                <SCCoinIcon className="size-3.5" />+{pack.bonus} bonus
               </p>
             </div>
 
