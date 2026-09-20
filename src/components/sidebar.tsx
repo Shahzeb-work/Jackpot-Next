@@ -19,6 +19,7 @@ import {
 } from "./icons";
 import { useAppState } from "./providers/app-state";
 import { SPIN_COOLDOWN_MS } from "@/lib/spin-config";
+import { showIntercom } from "@/lib/intercom";
 
 const NAV_ITEMS = [
   { label: "Home", icon: HomeIcon, active: true },
@@ -65,21 +66,27 @@ function formatCountdown(ms: number) {
 function NavList({ items }: { items: { label: string; icon: typeof HomeIcon; active?: boolean }[] }) {
   return (
     <nav className="flex flex-col gap-1 rounded-2xl border border-line bg-cream-surface p-2">
-      {items.map(({ label, icon: Icon, active }) => (
-        <a
-          key={label}
-          href="#"
-          aria-current={active ? "page" : undefined}
-          className={
-            active
-              ? "flex items-center gap-3 rounded-xl bg-emerald px-3.5 py-2.5 text-sm font-semibold text-cream-surface shadow-sm"
-              : "flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium text-ink-soft transition hover:bg-cream-surface-2 hover:text-ink"
-          }
-        >
-          <Icon className="size-5 shrink-0" />
-          {label}
-        </a>
-      ))}
+      {items.map(({ label, icon: Icon, active }) => {
+        const className = active
+          ? "flex items-center gap-3 rounded-xl bg-emerald px-3.5 py-2.5 text-sm font-semibold text-cream-surface shadow-sm"
+          : "flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium text-ink-soft transition hover:bg-cream-surface-2 hover:text-ink";
+
+        if (label === "Contact us") {
+          return (
+            <button key={label} type="button" onClick={showIntercom} className={className}>
+              <Icon className="size-5 shrink-0" />
+              {label}
+            </button>
+          );
+        }
+
+        return (
+          <a key={label} href="#" aria-current={active ? "page" : undefined} className={className}>
+            <Icon className="size-5 shrink-0" />
+            {label}
+          </a>
+        );
+      })}
     </nav>
   );
 }

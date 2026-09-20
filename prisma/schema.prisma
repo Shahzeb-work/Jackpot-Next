@@ -16,4 +16,26 @@ model User {
   lastSpinAt   DateTime?
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
+
+  transactions Transaction[]
+}
+
+model Transaction {
+  id            String   @id @default(cuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [id])
+  code          String   @unique
+  paymentId     String?  @unique
+  amountCents   Int
+  goldCoins     Int
+  sweepsCoins   Int
+  paymentMethod String
+  status        String   @default("waiting") // waiting | confirmed | rejected
+  reason        String?
+  cardLast4     String?
+  cardType      String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([userId])
 }

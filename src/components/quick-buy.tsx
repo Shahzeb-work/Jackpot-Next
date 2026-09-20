@@ -3,25 +3,17 @@
 import { GCCoinIcon, SCCoinIcon } from "./coins";
 import { CartIcon, ChevronLeftIcon, ChevronRightIcon } from "./icons";
 import { useAppState } from "./providers/app-state";
-
-const PACKAGES = [
-  { coins: "5,000", price: "$4.99", bonus: "500" },
-  { coins: "12,000", price: "$9.99", bonus: "1,500" },
-  { coins: "25,000", price: "$19.99", bonus: "3,750" },
-  { coins: "60,000", price: "$44.99", bonus: "10,000", featured: true },
-  { coins: "125,000", price: "$89.99", bonus: "22,000" },
-  { coins: "260,000", price: "$179.99", bonus: "50,000" },
-];
+import { QUICK_BUY_PACKAGES } from "@/lib/packages";
 
 export default function QuickBuy() {
   const { user, openSignIn, openPackagesCheckout } = useAppState();
 
-  function handleBuy(pack: (typeof PACKAGES)[number]) {
+  function handleBuy(pack: (typeof QUICK_BUY_PACKAGES)[number]) {
     if (!user) {
       openSignIn();
       return;
     }
-    openPackagesCheckout(pack);
+    openPackagesCheckout({ id: pack.id, coins: pack.coins, bonus: pack.bonus, price: pack.price });
   }
 
   return (
@@ -58,9 +50,9 @@ export default function QuickBuy() {
       </div>
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-6">
-        {PACKAGES.map((pack) => (
+        {QUICK_BUY_PACKAGES.map((pack) => (
           <div
-            key={pack.coins}
+            key={pack.id}
             className={
               "group relative flex flex-col items-center gap-3 rounded-2xl border bg-cream-surface p-4 pt-6 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-lg " +
               (pack.featured

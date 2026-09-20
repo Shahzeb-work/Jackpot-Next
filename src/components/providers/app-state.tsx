@@ -7,6 +7,7 @@ import type { SafeUser } from "@/lib/auth/current-user";
 type AuthTab = "signin" | "signup";
 
 export type CoinPackage = {
+  id: string;
   coins: string;
   price: string;
   bonus: string;

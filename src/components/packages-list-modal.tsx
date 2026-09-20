@@ -4,31 +4,13 @@ import { useAppState } from "./providers/app-state";
 import { Modal } from "./ui/modal";
 import { GCCoinIcon, SCCoinIcon } from "./coins";
 import { CloseIcon } from "./icons";
+import { GET_PACKAGES, type PackageBadge } from "@/lib/packages";
 
-type Badge = "NEW" | "POPULAR" | "SALE";
-
-const BADGE_STYLES: Record<Badge, { chip: string; ring: string }> = {
+const BADGE_STYLES: Record<PackageBadge, { chip: string; ring: string }> = {
   NEW: { chip: "bg-sky-500", ring: "border-sky-500/60 ring-1 ring-sky-500/30" },
   POPULAR: { chip: "bg-purple-500", ring: "border-purple-500/60 ring-1 ring-purple-500/30" },
   SALE: { chip: "bg-rose-500", ring: "border-rose-500/60 ring-1 ring-rose-500/30" },
 };
-
-const GET_PACKAGES: {
-  coins: string;
-  bonus: string;
-  price: string;
-  originalPrice?: string;
-  badge?: Badge;
-}[] = [
-  { coins: "90,000", bonus: "18", price: "$8.99", originalPrice: "$18", badge: "NEW" },
-  { coins: "150,000", bonus: "30", price: "$14.99", originalPrice: "$30", badge: "POPULAR" },
-  { coins: "300,000", bonus: "60", price: "$29.99", originalPrice: "$60", badge: "SALE" },
-  { coins: "50,000", bonus: "5", price: "$4.99" },
-  { coins: "500,000", bonus: "50", price: "$49.99" },
-  { coins: "1,000,000", bonus: "101", price: "$99.99", originalPrice: "$101" },
-  { coins: "2,000,000", bonus: "202", price: "$199.99", originalPrice: "$202" },
-  { coins: "5,000,000", bonus: "510", price: "$499.99", originalPrice: "$510" },
-];
 
 export default function PackagesListModal() {
   const { modal, closeModal, openPackagesCheckout, user, openSignIn } = useAppState();
@@ -39,7 +21,7 @@ export default function PackagesListModal() {
       openSignIn();
       return;
     }
-    openPackagesCheckout({ coins: pkg.coins, bonus: pkg.bonus, price: pkg.price });
+    openPackagesCheckout({ id: pkg.id, coins: pkg.coins, bonus: pkg.bonus, price: pkg.price });
   }
 
   return (
@@ -60,7 +42,7 @@ export default function PackagesListModal() {
         <div className="flex flex-col gap-3 overflow-y-auto pt-3 pr-1">
           {GET_PACKAGES.map((pkg) => (
             <button
-              key={pkg.coins}
+              key={pkg.id}
               type="button"
               onClick={() => handleSelect(pkg)}
               className={

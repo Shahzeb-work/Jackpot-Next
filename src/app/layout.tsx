@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Bebas_Neue } from "next/font/google";
 import Header from "@/components/header";
 import Sidebar from "@/components/sidebar";
 import SupportButton from "@/components/support-button";
+import IntercomWidget from "@/components/intercom-widget";
 import AuthModal from "@/components/auth-modal";
 import RewardsModal from "@/components/rewards-modal";
 import PackagesModal from "@/components/packages-modal";
@@ -54,6 +55,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
           <PackagesModal />
           <PackagesListModal />
           <SpinWheelModal />
+          <IntercomWidget />
         </AppStateProvider>
       </body>
     </html>
