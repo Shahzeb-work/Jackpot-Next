@@ -17,7 +17,9 @@ model User {
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
 
-  transactions Transaction[]
+  transactions       Transaction[]
+  rewardTransactions RewardTransaction[]
+  verification       Verification?
 }
 
 model Transaction {
@@ -38,4 +40,45 @@ model Transaction {
   updatedAt     DateTime @updatedAt
 
   @@index([userId])
+}
+
+model RewardTransaction {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  code        String   @unique
+  source      String // email_verification | phone_verification | kyc_verification
+  goldCoins   Int
+  sweepsCoins Int
+  createdAt   DateTime @default(now())
+
+  @@index([userId])
+}
+
+model Verification {
+  id                 String    @id @default(cuid())
+  userId             String    @unique
+  user               User      @relation(fields: [userId], references: [id])
+  emailOtp           String?
+  emailOtpExpiresAt  DateTime?
+  emailVerifiedAt    DateTime?
+  emailRewardClaimed Boolean   @default(false)
+  phoneNumber        String?
+  phoneOtp           String?
+  phoneOtpExpiresAt  DateTime?
+  phoneVerifiedAt    DateTime?
+  phoneRewardClaimed Boolean   @default(false)
+  kycFirstName       String?
+  kycLastName        String?
+  kycDateOfBirth     String?
+  kycAddress1        String?
+  kycAddress2        String?
+  kycCity            String?
+  kycState           String?
+  kycCountry         String?
+  kycZip             String?
+  kycVerifiedAt      DateTime?
+  kycRewardClaimed   Boolean   @default(false)
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
 }

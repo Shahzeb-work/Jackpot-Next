@@ -5,17 +5,35 @@ import Link from "next/link";
 import {
   BellGiftIcon,
   BellIcon,
+  ChatIcon,
   ChevronLeftIcon,
+  CrownIcon,
+  GearIcon,
+  LogoutIcon,
+  MedalIcon,
+  PercentBadgeIcon,
   PersonIcon,
   PlusIcon,
+  ReceiptIcon,
   SearchIcon,
+  ShieldCheckIcon,
+  SwapIcon,
 } from "./icons";
 import { GCCoinIcon, SCCoinIcon } from "./coins";
 import { useAppState } from "./providers/app-state";
 import { signOutAction } from "@/lib/actions/auth";
 
 export default function Header() {
-  const { user, setUser, openSignIn, openSignUp, openRewards, openPackagesList } = useAppState();
+  const {
+    user,
+    setUser,
+    openSignIn,
+    openSignUp,
+    openRewards,
+    openPackagesList,
+    openTransactionHistory,
+    openVerification,
+  } = useAppState();
   const [isPending, startTransition] = useTransition();
   const [accountMenuOpen, setAccountMenuOpen] = useState(false);
   const accountMenuRef = useRef<HTMLDivElement>(null);
@@ -40,6 +58,34 @@ export default function Header() {
       setAccountMenuOpen(false);
     });
   }
+
+  const accountMenuItems: { label: string; icon: typeof PersonIcon; onClick?: () => void }[] = [
+    { label: "My Profile", icon: PersonIcon },
+    {
+      label: "Verification",
+      icon: ShieldCheckIcon,
+      onClick: () => {
+        openVerification();
+        setAccountMenuOpen(false);
+      },
+    },
+    {
+      label: "Transaction History",
+      icon: ReceiptIcon,
+      onClick: () => {
+        openTransactionHistory();
+        setAccountMenuOpen(false);
+      },
+    },
+    { label: "Promo Codes", icon: PercentBadgeIcon },
+    { label: "Achievements", icon: MedalIcon },
+    { label: "VIP Tiers", icon: CrownIcon },
+    { label: "Notifications", icon: BellIcon },
+    { label: "Messages", icon: ChatIcon },
+    { label: "Settings", icon: GearIcon },
+    { label: "Logout", icon: LogoutIcon, onClick: handleSignOut },
+    { label: "Redeem Coins", icon: SwapIcon },
+  ];
 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-cream/95 backdrop-blur supports-backdrop-blur:bg-cream/80">
@@ -127,18 +173,25 @@ export default function Header() {
                 </button>
 
                 {accountMenuOpen && (
-                  <div className="absolute top-full right-0 mt-2 w-56 rounded-2xl border border-line bg-cream-surface p-2 shadow-2xl">
+                  <div className="absolute top-full right-0 mt-2 w-64 rounded-2xl border border-line bg-cream-surface p-2 shadow-2xl">
                     <p className="truncate px-3 py-2 text-sm font-semibold text-ink">
                       {user.username ?? user.email}
                     </p>
-                    <button
-                      type="button"
-                      onClick={handleSignOut}
-                      disabled={isPending}
-                      className="w-full rounded-xl px-3 py-2 text-left text-sm font-semibold text-ink-soft transition hover:bg-cream-surface-2 hover:text-ink disabled:opacity-60"
-                    >
-                      {isPending ? "Signing Out…" : "Sign Out"}
-                    </button>
+                    <div className="my-1 border-t border-line" />
+                    <div className="flex max-h-[70vh] flex-col gap-0.5 overflow-y-auto">
+                      {accountMenuItems.map(({ label, icon: Icon, onClick }) => (
+                        <button
+                          key={label}
+                          type="button"
+                          disabled={label === "Logout" && isPending}
+                          onClick={onClick ?? (() => setAccountMenuOpen(false))}
+                          className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-semibold text-ink-soft transition hover:bg-cream-surface-2 hover:text-ink disabled:opacity-60"
+                        >
+                          <Icon className="size-4.5 shrink-0" />
+                          {label === "Logout" && isPending ? "Signing Out…" : label}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>

@@ -9,6 +9,8 @@ import RewardsModal from "@/components/rewards-modal";
 import PackagesModal from "@/components/packages-modal";
 import PackagesListModal from "@/components/packages-list-modal";
 import SpinWheelModal from "@/components/spin-wheel-modal";
+import TransactionHistoryModal from "@/components/transaction-history-modal";
+import VerificationModal from "@/components/verification-modal";
 import { AppStateProvider } from "@/components/providers/app-state";
 import { getCurrentUser } from "@/lib/auth/current-user";
 import "./globals.css";
@@ -55,6 +57,8 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
           <PackagesModal />
           <PackagesListModal />
           <SpinWheelModal />
+          <TransactionHistoryModal />
+          <VerificationModal />
           <IntercomWidget />
         </AppStateProvider>
       </body>

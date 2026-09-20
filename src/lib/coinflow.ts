@@ -70,3 +70,16 @@ export function isValidWebhookAuth(authHeader: string | null) {
   const expected = process.env.COINFLOW_WEBHOOK_KEY;
   return Boolean(expected) && authHeader === expected;
 }
+
+export function paymentMethodLabel(method: string) {
+  switch (method) {
+    case "applePay":
+      return "Apple Pay";
+    case "googlePay":
+      return "Google Pay";
+    case "card":
+      return "Card Payment";
+    default:
+      return method;
+  }
+}

@@ -95,3 +95,44 @@ export async function getCoinflowTransactionStatusAction(code: string): Promise<
     reason: tx.reason ?? undefined,
   };
 }
+
+export type UserTransaction = {
+  id: string;
+  code: string;
+  createdAt: string;
+  amountCents: number;
+  goldCoins: number;
+  sweepsCoins: number;
+  paymentMethod: string;
+  status: "waiting" | "confirmed" | "rejected";
+};
+
+export type UserTransactionsResult =
+  | { ok: true; transactions: UserTransaction[] }
+  | { ok: false; error: string };
+
+export async function getUserTransactionsAction(): Promise<UserTransactionsResult> {
+  const userId = await getSessionUserId();
+  if (!userId) {
+    return { ok: false, error: "You need to sign in to view transaction history." };
+  }
+
+  const transactions = await prisma.transaction.findMany({
+    where: { userId },
+    orderBy: { createdAt: "desc" },
+  });
+
+  return {
+    ok: true,
+    transactions: transactions.map((tx) => ({
+      id: tx.id,
+      code: tx.code,
+      createdAt: tx.createdAt.toISOString(),
+      amountCents: tx.amountCents,
+      goldCoins: tx.goldCoins,
+      sweepsCoins: tx.sweepsCoins,
+      paymentMethod: tx.paymentMethod,
+      status: tx.status as UserTransaction["status"],
+    })),
+  };
+}

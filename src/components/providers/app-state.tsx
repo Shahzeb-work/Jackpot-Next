@@ -19,6 +19,8 @@ type ModalState =
   | { type: "packages-list" }
   | { type: "packages-checkout"; pkg: CoinPackage }
   | { type: "spin" }
+  | { type: "transaction-history" }
+  | { type: "verification" }
   | null;
 
 type AppStateContextValue = {
@@ -31,6 +33,8 @@ type AppStateContextValue = {
   openPackagesList: () => void;
   openPackagesCheckout: (pkg: CoinPackage) => void;
   openSpin: () => void;
+  openTransactionHistory: () => void;
+  openVerification: () => void;
   closeModal: () => void;
   setAuthTab: (tab: AuthTab) => void;
 };
@@ -56,6 +60,8 @@ export function AppStateProvider({
     []
   );
   const openSpin = useCallback(() => setModal({ type: "spin" }), []);
+  const openTransactionHistory = useCallback(() => setModal({ type: "transaction-history" }), []);
+  const openVerification = useCallback(() => setModal({ type: "verification" }), []);
   const closeModal = useCallback(() => setModal(null), []);
   const setAuthTab = useCallback((tab: AuthTab) => setModal({ type: "auth", tab }), []);
 
@@ -70,6 +76,8 @@ export function AppStateProvider({
       openPackagesList,
       openPackagesCheckout,
       openSpin,
+      openTransactionHistory,
+      openVerification,
       closeModal,
       setAuthTab,
     }),
@@ -82,6 +90,8 @@ export function AppStateProvider({
       openPackagesList,
       openPackagesCheckout,
       openSpin,
+      openTransactionHistory,
+      openVerification,
       closeModal,
       setAuthTab,
     ]
