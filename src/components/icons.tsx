@@ -667,6 +667,74 @@ export function PhoneCheckIcon({ className }: IconProps) {
   );
 }
 
+export function InstagramIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" strokeWidth={base} />
+      <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth={base} />
+      <circle cx="17" cy="7" r="1" fill="currentColor" />
+    </svg>
+  );
+}
+
+export function XSocialIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden>
+      <path
+        d="M5 4.5h3.6l4 5.4 4.3-5.4H19l-6 7.4 6.4 7.6h-3.6l-4.3-5.6-4.6 5.6H4.5l6.4-7.8L5 4.5Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+export function TelegramIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth={base} />
+      <path
+        d="m6.5 12.3 10.2-4.1c.5-.2.9.2.7.7l-1.8 8.3c-.1.6-.7.8-1.2.5l-2.8-2.1-1.5 1.5c-.2.2-.5.2-.6-.1l-.4-2.4 6.3-5.9-7.3 4.6-1.6-.5c-.6-.2-.6-.6 0-.8Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+export function CheckCircleIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth={base} />
+      <path d="m8 12.3 2.5 2.5L16 9.5" stroke="currentColor" strokeWidth={base} strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+export function PhoneRingIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <path
+        d="M6 4.5h2.2l1.3 3.6-1.6 1.6a11 11 0 0 0 5.4 5.4l1.6-1.6 3.6 1.3V17c0 1.4-1.1 2.5-2.5 2.4-6.4-.5-11.5-5.6-12-12C3.5 5.6 4.6 4.5 6 4.5Z"
+        stroke="currentColor"
+        strokeWidth={base}
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function DiceIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <rect x="3.5" y="3.5" width="17" height="17" rx="3.5" stroke="currentColor" strokeWidth={base} />
+      <circle cx="8.2" cy="8.2" r="1.3" fill="currentColor" />
+      <circle cx="15.8" cy="8.2" r="1.3" fill="currentColor" />
+      <circle cx="12" cy="12" r="1.3" fill="currentColor" />
+      <circle cx="8.2" cy="15.8" r="1.3" fill="currentColor" />
+      <circle cx="15.8" cy="15.8" r="1.3" fill="currentColor" />
+    </svg>
+  );
+}
+
 export function IdCardIcon({ className }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>

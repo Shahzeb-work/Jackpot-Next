@@ -74,3 +74,12 @@ body {
 .animate-glow {
   animation: marquee-glow 2.6s ease-in-out infinite;
 }
+
+@keyframes slide-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}

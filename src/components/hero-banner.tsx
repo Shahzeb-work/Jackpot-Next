@@ -48,11 +48,11 @@ export default function HeroBanner() {
 
   useEffect(() => {
     if (paused) return;
-    const id = window.setInterval(() => {
+    const id = window.setTimeout(() => {
       setActive((i) => (i + 1) % SLIDES.length);
     }, AUTOPLAY_MS);
-    return () => window.clearInterval(id);
-  }, [paused]);
+    return () => window.clearTimeout(id);
+  }, [paused, active]);
 
   function goTo(index: number) {
     setActive(((index % SLIDES.length) + SLIDES.length) % SLIDES.length);
@@ -129,7 +129,7 @@ export default function HeroBanner() {
       </div>
 
       <div className="relative mt-8 flex items-center justify-between">
-        <div className="flex gap-1.5">
+        <div className="flex gap-2.5">
           {SLIDES.map((slide, i) => (
             <button
               key={slide.title}
@@ -138,11 +138,20 @@ export default function HeroBanner() {
               aria-current={i === active}
               onClick={() => goTo(i)}
               className={
-                i === active
-                  ? "h-1.5 w-6 rounded-full bg-gold-bright transition-all"
-                  : "h-1.5 w-1.5 rounded-full bg-ink/25 transition-all hover:bg-ink/40"
+                "relative overflow-hidden rounded-full bg-ink/20 transition-all " +
+                (i === active ? "h-3 w-14" : "h-3 w-3 hover:bg-ink/35")
               }
-            />
+            >
+              {i === active && (
+                <span
+                  className="absolute inset-y-0 left-0 rounded-full bg-gold-bright"
+                  style={{
+                    animation: `slide-progress ${AUTOPLAY_MS}ms linear forwards`,
+                    animationPlayState: paused ? "paused" : "running",
+                  }}
+                />
+              )}
+            </button>
           ))}
         </div>
         <div className="flex gap-2">
@@ -150,7 +159,7 @@ export default function HeroBanner() {
             type="button"
             aria-label="Previous slide"
             onClick={() => goTo(active - 1)}
-            className="grid size-8 place-items-center rounded-full border border-ink/20 text-ink/70 transition hover:border-gold-bright hover:text-gold-bright"
+            className="grid size-8 place-items-center rounded-full border border-black/30 bg-black/10 text-black transition hover:border-black hover:bg-black hover:text-gold-bright"
           >
             <ChevronLeftIcon className="size-4" />
           </button>
@@ -158,7 +167,7 @@ export default function HeroBanner() {
             type="button"
             aria-label="Next slide"
             onClick={() => goTo(active + 1)}
-            className="grid size-8 place-items-center rounded-full border border-ink/20 text-ink/70 transition hover:border-gold-bright hover:text-gold-bright"
+            className="grid size-8 place-items-center rounded-full border border-black/30 bg-black/10 text-black transition hover:border-black hover:bg-black hover:text-gold-bright"
           >
             <ChevronRightIcon className="size-4" />
           </button>
