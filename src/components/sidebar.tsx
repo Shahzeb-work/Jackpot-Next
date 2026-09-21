@@ -16,35 +16,38 @@ import {
   ReferIcon,
   SpinWheelIcon,
   TierIcon,
+  TrophyIcon,
 } from "./icons";
 import { useAppState } from "./providers/app-state";
 import { SPIN_COOLDOWN_MS } from "@/lib/spin-config";
 import { showIntercom } from "@/lib/intercom";
 
 const NAV_ITEMS = [
-  { label: "Home", icon: HomeIcon, active: true },
-  { label: "VIP Tiers", icon: TierIcon },
-  { label: "Promotions", icon: GiftIcon },
-  { label: "Achievements", icon: MedalIcon },
-  { label: "Refer a Friend", icon: ReferIcon },
-  { label: "Providers", icon: ProvidersIcon },
+  { label: "Home", icon: HomeIcon, href: "/", active: true },
+  { label: "Tournaments", icon: TrophyIcon, href: "/tournaments" },
+  { label: "VIP Tiers", icon: TierIcon, href: "#" },
+  { label: "Promotions", icon: GiftIcon, href: "#" },
+  { label: "Achievements", icon: MedalIcon, href: "#" },
+  { label: "Refer a Friend", icon: ReferIcon, href: "#" },
+  { label: "Providers", icon: ProvidersIcon, href: "#" },
 ];
 
-const LOGGED_IN_GROUPS: { label: string; icon: typeof HomeIcon; active?: boolean }[][] = [
+const LOGGED_IN_GROUPS: { label: string; icon: typeof HomeIcon; href?: string; active?: boolean }[][] = [
   [
-    { label: "Home", icon: HomeIcon, active: true },
-    { label: "Recent Games", icon: ClockIcon },
-    { label: "Favorite Games", icon: HeartIcon },
+    { label: "Home", icon: HomeIcon, href: "/", active: true },
+    { label: "Recent Games", icon: ClockIcon, href: "#" },
+    { label: "Favorite Games", icon: HeartIcon, href: "#" },
   ],
   [
-    { label: "VIP Tiers", icon: TierIcon },
-    { label: "Refer a Friend", icon: ReferIcon },
-    { label: "Achievements", icon: MedalIcon },
+    { label: "Tournaments", icon: TrophyIcon, href: "/tournaments" },
+    { label: "VIP Tiers", icon: TierIcon, href: "#" },
+    { label: "Refer a Friend", icon: ReferIcon, href: "#" },
+    { label: "Achievements", icon: MedalIcon, href: "#" },
   ],
   [
-    { label: "Promotions", icon: GiftIcon },
-    { label: "Providers", icon: ProvidersIcon },
-    { label: "Contact us", icon: HeadsetIcon },
+    { label: "Promotions", icon: GiftIcon, href: "#" },
+    { label: "Providers", icon: ProvidersIcon, href: "#" },
+    { label: "Contact us", icon: HeadsetIcon, href: "#" },
   ],
 ];
 
@@ -63,10 +66,10 @@ function formatCountdown(ms: number) {
   return `${String(d).padStart(2, "0")}d ${String(h).padStart(2, "0")}h ${String(m).padStart(2, "0")}m ${String(s).padStart(2, "0")}s`;
 }
 
-function NavList({ items }: { items: { label: string; icon: typeof HomeIcon; active?: boolean }[] }) {
+function NavList({ items }: { items: { label: string; icon: typeof HomeIcon; href?: string; active?: boolean }[] }) {
   return (
     <nav className="flex flex-col gap-1 rounded-2xl border border-line bg-cream-surface p-2">
-      {items.map(({ label, icon: Icon, active }) => {
+      {items.map(({ label, icon: Icon, href, active }) => {
         const className = active
           ? "flex items-center gap-3 rounded-xl bg-emerald px-3.5 py-2.5 text-sm font-semibold text-cream-surface shadow-sm"
           : "flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium text-ink-soft transition hover:bg-cream-surface-2 hover:text-ink";
@@ -81,7 +84,7 @@ function NavList({ items }: { items: { label: string; icon: typeof HomeIcon; act
         }
 
         return (
-          <a key={label} href="#" aria-current={active ? "page" : undefined} className={className}>
+          <a key={label} href={href ?? "#"} aria-current={active ? "page" : undefined} className={className}>
             <Icon className="size-5 shrink-0" />
             {label}
           </a>
@@ -187,10 +190,10 @@ export default function Sidebar() {
       ) : (
         <>
           <nav className="flex flex-col gap-1">
-            {NAV_ITEMS.map(({ label, icon: Icon, active }) => (
+            {NAV_ITEMS.map(({ label, icon: Icon, href, active }) => (
               <a
                 key={label}
-                href="#"
+                href={href ?? "#"}
                 aria-current={active ? "page" : undefined}
                 className={
                   active

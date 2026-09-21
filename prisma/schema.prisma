@@ -17,9 +17,11 @@ model User {
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
 
-  transactions       Transaction[]
-  rewardTransactions RewardTransaction[]
-  verification       Verification?
+  transactions           Transaction[]
+  rewardTransactions     RewardTransaction[]
+  verification           Verification?
+  tournamentLeaderboard  TournamentLeaderboard[]
+  tournamentParticipants TournamentParticipant[]
 }
 
 model Transaction {
@@ -81,4 +83,80 @@ model Verification {
   kycRewardClaimed   Boolean   @default(false)
   createdAt          DateTime  @default(now())
   updatedAt          DateTime  @updatedAt
+}
+
+model Tournament {
+  id                 String    @id @default(cuid())
+  name               String
+  bannerUrl          String
+  startTime          DateTime
+  endTime            DateTime
+  tournamentType     String    // multiplier | winning | wagered | referral | freespin
+  coinMode           String    // gc | sc | gc_sc
+  prizePoolGc        Float     @default(0)
+  prizePoolSc        Float     @default(0)
+  prizePoolRates     Json?     // [{rank, gcValue, scValue}]
+  description        String?
+  status             String    @default("commingup") // active | commingup | ended | canceled
+  winners            Int       @default(20)
+  isDeleted          Boolean   @default(false)
+  isPrizeDistributed Boolean   @default(false)
+  prizeDistributedAt DateTime?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  leaderboard  TournamentLeaderboard[]
+  participants TournamentParticipant[]
+  games        TournamentGame[]
+
+  @@index([status, isDeleted, startTime])
+  @@index([status, isDeleted])
+}
+
+model TournamentGame {
+  id           String     @id @default(cuid())
+  tournamentId String
+  tournament   Tournament @relation(fields: [tournamentId], references: [id])
+  gameId       String
+  gameName     String
+  thumbnail    String?
+
+  @@index([tournamentId])
+}
+
+model TournamentParticipant {
+  id           String     @id @default(cuid())
+  tournamentId String
+  tournament   Tournament @relation(fields: [tournamentId], references: [id])
+  userId       String
+  user         User       @relation(fields: [userId], references: [id])
+  joinedAt     DateTime   @default(now())
+
+  @@unique([tournamentId, userId])
+  @@index([tournamentId])
+  @@index([userId])
+}
+
+model TournamentLeaderboard {
+  id               String     @id @default(cuid())
+  tournamentId     String
+  tournament       Tournament @relation(fields: [tournamentId], references: [id])
+  userId           String
+  user             User       @relation(fields: [userId], references: [id])
+  place            Int        @default(0)
+  prevPlace        Int        @default(0)
+  points           Float      @default(0)
+  gcPrize          Float      @default(0)
+  scPrize          Float      @default(0)
+  gcBet            Float      @default(0)
+  scBet            Float      @default(0)
+  availableToClaim Boolean    @default(false)
+  isClaimed        Boolean    @default(false)
+  claimedAt        DateTime?
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+
+  @@unique([tournamentId, userId])
+  @@index([tournamentId, place])
+  @@index([userId, availableToClaim, isClaimed])
 }

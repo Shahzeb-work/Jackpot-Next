@@ -722,6 +722,31 @@ export function PhoneRingIcon({ className }: IconProps) {
   );
 }
 
+export function TrophyIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <path
+        d="M7 3.5h10v7a5 5 0 0 1-10 0v-7Z"
+        stroke="currentColor"
+        strokeWidth={base}
+        strokeLinejoin="round"
+      />
+      <path
+        d="M7 6.5H4.5a2 2 0 0 0 0 4H7M17 6.5h2.5a2 2 0 0 1 0 4H17"
+        stroke="currentColor"
+        strokeWidth={base}
+        strokeLinecap="round"
+      />
+      <path
+        d="M12 15.5v3M9 20.5h6"
+        stroke="currentColor"
+        strokeWidth={base}
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 export function DiceIcon({ className }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
