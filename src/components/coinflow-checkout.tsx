@@ -5,7 +5,7 @@ import { getCoinflowTransactionStatusAction } from "@/lib/actions/coinflow";
 import { CloseIcon } from "./icons";
 
 const COINFLOW_WIDGET_ORIGIN =
-  process.env.NEXT_PUBLIC_COINFLOW_WIDGET_ORIGIN || "https://sandbox.coinflow.cash";
+  process.env.COINFLOW_WIDGET_ORIGIN || "https://sandbox.coinflow.cash";
 const POLL_INTERVAL_MS = 2500;
 
 export type CoinflowResult =
